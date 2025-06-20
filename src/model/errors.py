@@ -7,13 +7,9 @@ from pydantic import BaseModel
 
 class ErrorCode(StrEnum):
     database_connection_error = "database_connection_error"
-    missing_token = "missing_token"
-    missing_signing_key = "missing_signing_key"
-    invalid_token = "invalid_token"
-    expired_token = "expired_token"
-    invalid_token_claims = "invalid_token_claims"
     unknown_error = "unknown_error"
     invalid_request = "invalid_request"
+    not_found = "not_found"
 
 
 class ErrorResponse(BaseModel):

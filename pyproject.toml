@@ -1,59 +1,28 @@
 [project]
-name = "api-template"
+name = "russel-library-api"
 version = "0.1.0"
-description = "Template FastAPI application"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "fastapi[standard]<1.0.0,>=0.114.2",
-    "python-multipart<1.0.0,>=0.0.7",
-    "email-validator<3.0.0,>=2.1.0",
-    "pydantic>2.0",
-    "SQLAlchemy>2.0",
-    "alembic<2.0.0,>=1.12.1",
-    "pydantic-settings",
-    "sentry-sdk[fastapi]",
-    "python-jose[cryptography]",
-    "redis[hiredis]>=5.2.1",
-    "sqlmodel>=0.0.22",
-    "greenlet>=3.1.1",
-    "asyncpg>=0.30.0",
-    "more-itertools>=10.6.0",
-    "psycopg2-binary>=2.9.10",
-    "google-cloud-pubsub>=2.27.2",
-    "opentelemetry-instrumentation-fastapi>=0.51b0",
-    "opentelemetry-exporter-otlp>=1.30.0",
-    "opentelemetry-instrumentation-requests>=0.51b0",
-    "opentelemetry-instrumentation-sqlalchemy>=0.51b0",
     "aiosqlite>=0.21.0",
+    "fastapi[standard]>=0.115.11",
+    "greenlet>=3.2.3",
+    "pydantic>=2.10.6",
+    "pydantic-settings>=2.10.0",
 ]
 
 [dependency-groups]
 dev = [
-    "pytest>=8.2.0",
-    "pytest-asyncio>=0.25.2",
-    "mypy<2.0.0,>=1.8.0",
-    "ruff<1.0.0,>=0.2.2",
-    "pre-commit<4.1.1,>=4.1.0",
-    "aiosqlite>=0.20.0",
-    "freezegun>=1.5.1",
-    "pytest-cov>=6.0.0",
-    "pytest-env>=1.1.5",
+    "mypy>=1.16.1",
+    "pytest>=8.3.5",
+    "pytest-asyncio>=0.25.3",
+    "ruff>=0.9.9",
 ]
 
 [tool.pytest.ini_options]
 pythonpath = [
   "."
 ]
-markers = [
-  "system: marks tests as tests that touch on services outside this one",
-]
-
-[tool.pytest_env]
-ENABLE_TELEMETRY = "false"
-
-[tool.coverage.run]
-concurrency = ["thread", "greenlet"]
 
 [tool.mypy]
 strict = true
@@ -100,5 +69,3 @@ line-ending = "auto"
 # Preserve types, even if a file imports `from __future__ import annotations`.
 keep-runtime-typing = true
 
-[tool.pyright]
-ignore = ["alembic"]

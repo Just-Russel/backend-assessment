@@ -1,176 +1,52 @@
-# Backend developer assessment
-This repository contains sample code, representative of production-grade Just Russel platform code.
+# Junior developer assessment
 
-It's meant to assess a developer's ability to:
-- Read and understand existing code.
-- Perform code reviews.
-- Find and fix bugs based on non-technical reports.
-- Implement new features based on a user story.
+# Project Overview
 
-## Configuring the environment
+This is a simple FastAPI project using a SQLite database for persistence. It includes:
 
-- Initialize the .env file in the project root:
-```
-cp .env.example .env
-```
-- update the `.env` file with project specific values:
-```bash
-APP_NAME="Test service"
-APP_DESCRIPTION="My super cool service"
-SERVICE_NAME=test_service
-DB_NAME=test_db
-DB_USER=db_test_user
-DB_PASSWORD=db_test_password
-```
+- A basic setup with an `author` entity
+- Endpoints to Create, Read, Update, and Delete (CRUD) authors
+- Project scaffolding with requirements.txt and pyproject.toml to support both pip and poetry
 
-- Make sure to have [direnv](https://direnv.net/docs/hook.html) installed.
+Your task is to build on this foundation by adding new features and improvements.
 
-- Configure direnv to source the `.env` file in the project root:
+# Getting started
 
-`~/.config/direnv/direnv.toml`:
+1. Get started by setting up the project virtual environment and installing the dependencies.
+    You can choose whatever method you prefer, both a `requirements.txt` file and a `pyproject.toml` file are provided.
+2. You can start the server by running the `src` package as a module.
+3. After running the server, you can browse the existing endpoints at `http://localhost:8000/docs` or `http://localhost:8000/redoc`.
+4. I recommend taking a look at the project structure and the existing code to understand how it works.
 
-```toml
-[global]
-load_dotenv = true
-```
+# Main objective
 
-```
-direnv allow .
-```
++ Add a Book entity:
+    - Implement full CRUD functionality
+    - Each Book should be associated with one Author
+    - An Author can have many Books
 
-## Setting up the development environment
++ Add a new endpoint to list all books by a specific author
 
-```
-make dev-setup
-```
++ Add a new endpoint to update an author or book
 
-## (Re-)Initialize the database
++ Implement authentication for all endpoints:
+    - You may use any method you prefer (e.g. API Key, JWT, OAuth2)
+    - Make sure endpoints are secured appropriately
 
-This is executed when running the `make dev-setup` or `make setup` target, but can also be run separately:
++ Write tests for your new features
+    - Use `pytest`, `unittest`, or any test framework you're comfortable with
 
-```
-make init-db
-```
+## Bonus Points
 
-## Database migrations
+- Use type annotations and ensure your code is type-safe
+- Organize your code following clean architecture or well-structured modular design
+- Add meaningful tests
+- Implement role-based access control or different user roles
+- Meaningful commit messages
 
-### Check for pending migrations
+## Final Notes
 
-```
-make check-migrations
-```
+- Focus on clean, readable, and maintainable code.
+- Don't hesitate to refactor existing code if needed.
 
-### Generate migrations
-
-```
-make generate-migrations
-```
-
-### Apply migrations
-
-```
-make apply-migrations
-```
-
-## Initialize the secrets
-
-This is executed when running the `make dev-setup` or `make setup` target, but can also be run separately:
-
-```
-make secrets
-```
-
-## Running the app
-
-Running in dev mode using default settings (listening on http://127.0.0.1:8000):
-```
-uv run fastapi dev src/main.py
-```
-
-Running using the configured environment (sourcing .env file):
-```
-uv run python -m src
-```
-
-Or using the makefile
-```
-make debug
-```
-
-Or running in a docker container
-```
-make run
-```
-
-## Common make targets
-
-### Project development environment setup
-
-```
-make setup
-```
-
-Can be used after cloning the repository to set up the project.
-This will create a virtual environment and install the dependencies.
-
-### Check type annotations
-
-```
-make type-check
-```
-
-Runs mypy on the project src folder.
-
-### Linting the code
-
-```
-make lint
-```
-
-Perform flakes8 linting on the project src folder (using ruff).
-
-### Format the code
-
-```
-make format
-```
-
-### Running tests
-
-```
-make unit-tests
-```
-runs pytest on the project src folder.
-
-```
-make integration-tests
-```
-runs pytest on the project tests folder.
-
-```
-make tests
-```
-runs both unit and integration tests.
-
-```
-make cov
-```
-runs both unit and integration tests, and generates a coverage report.
-
-### Docker images
-
-```
-make build
-```
-Builds the docker image from the current codebase.
-
-```
-make publish
-```
-Publishes the docker image to the configured registry.
-
-
-## Authentication
-Authentication is done via signed JWT tokens.
-Multiple named signing keys are supported so that keys can be rotated without invalidating existing sessions.
-The name of the key used for signing is inserted into the JWT header, so that we know which key to use when validating the token later.
+**Good luck! If you have any questions, feel free to ask.**
