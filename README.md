@@ -5,8 +5,8 @@
 This is a simple FastAPI project using a SQLite database for persistence. It includes:
 
 - A basic setup with an `author` entity
-- Endpoints to Create, Read, Update, and Delete (CRUD) authors
-- Project scaffolding with requirements.txt and pyproject.toml to support both pip and poetry
+- Endpoints to create and read authors
+- Project scaffolding with requirements.txt and pyproject.toml
 
 Your task is to build on this foundation by adding new features and improvements.
 
@@ -21,7 +21,7 @@ Your task is to build on this foundation by adding new features and improvements
 # Main objective
 
 + Add a Book entity:
-    - Implement full CRUD functionality
+    - Implement create and read endpoints
     - Each Book should be associated with one Author
     - An Author can have many Books
 
